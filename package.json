@@ -12,13 +12,14 @@
         "mongoose": "^5.7.7",
         "mysql2": "^2.0.0",
         "node-fetch": "^2.6.0",
+        "nodemon": "^2.0.19",
         "pathfinding": "^0.4.17",
         "supervisor": "^0.12.0",
         "ws": "^7.2.0"
     },
     "devDependencies": {},
     "scripts": {
-        "dev": "NODE_ENV=development supervisor server.js",
+        "dev": "set NODE_ENV=development&& supervisor server.js nodemon --watch server server.js",
         "start": "node server.js"
     },
     "repository": {
