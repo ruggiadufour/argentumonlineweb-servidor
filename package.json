@@ -19,7 +19,7 @@
     },
     "devDependencies": {},
     "scripts": {
-        "dev": "set NODE_ENV=development&& supervisor server.js nodemon --watch server server.js",
+        "dev": "NODE_ENV=development supervisor server.js",
         "start": "node server.js"
     },
     "repository": {
