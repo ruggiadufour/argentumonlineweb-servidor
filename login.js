@@ -41,11 +41,11 @@ function Login() {
                     }
                 );
 
-                const { account, character } = result;
+                const { data: { account, character } } = result;
 
                 if (
-                    !result.account._id ||
-                    (typeGame == 1 && !result.character._id)
+                    !account._id ||
+                    (typeGame == 1 && !character._id)
                 ) {
                     ws.close();
                     return;
