@@ -41,7 +41,8 @@ function Login() {
                     }
                 );
 
-                const { data: { account, character } } = result;
+                const { data: { account, character = {} } } = result;
+                
 
                 if (
                     !account._id ||
