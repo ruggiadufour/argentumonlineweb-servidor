@@ -9,13 +9,13 @@ class LoadMaps {
     async initialize() {
         let arMapsToLoad = [];
 
-        if (NODE_ENV === "development") {
-            arMapsToLoad.push(this.readMap(272));
-        } else {
+        // if (NODE_ENV === "development") {
+        //     arMapsToLoad.push(this.readMap(272));
+        // } else {
             for (let i = 1; i < 291; i++) {
                 arMapsToLoad.push(this.readMap(i));
             }
-        }
+        // }
 
         await Promise.all(arMapsToLoad);
 

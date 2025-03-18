@@ -43,7 +43,6 @@ function Login() {
 
                 const { data: { account, character = {} } } = result;
                 
-
                 if (
                     !account._id ||
                     (typeGame == 1 && !character._id)
@@ -207,20 +206,16 @@ function Login() {
 
                 vars.clients[ws.id] = ws;
 
-                if (
-                    vars.mapData[vars.personajes[ws.id].map][
-                        vars.personajes[ws.id].pos.y
-                    ][vars.personajes[ws.id].pos.x].id
-                ) {
+                const map = vars.mapData[vars.personajes[ws.id].map];
+
+                if (map?.[personaje.pos.y]?.[personaje.pos.x]?.id) {
                     const pos = game.getFreeSpace(ws, 272, 77, 48);
 
                     vars.personajes[ws.id].pos.y = pos.y;
                     vars.personajes[ws.id].pos.x = pos.x;
-                }
 
-                vars.mapData[vars.personajes[ws.id].map][
-                    vars.personajes[ws.id].pos.y
-                ][vars.personajes[ws.id].pos.x].id = ws.id;
+                    map[personaje.pos.y][personaje.pos.x].id = ws.id;
+                }
 
                 personaje.ip = socket.getIp(ws);
 
@@ -230,7 +225,7 @@ function Login() {
                 };
 
                 const characterSave = await funct.fetchUrl(
-                    `/character_save/${personaje._id}`,
+                    `/api/character/save/${personaje._id}`,
                     {
                         method: "PUT",
                         body: JSON.stringify(bodyPersonaje),

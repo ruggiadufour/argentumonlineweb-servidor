@@ -390,7 +390,7 @@ function Game() {
                         };
 
                         const characterSave = await funct.fetchUrl(
-                            `/character_save/${user._id}`,
+                            `/api/character/save/${user._id}`,
                             {
                                 method: "PUT",
                                 body: JSON.stringify(bodyPersonaje),
@@ -810,7 +810,7 @@ function Game() {
                     user.updatedAt = new Date();
 
                     const characterSave = await funct.fetchUrl(
-                        `/character_save/${user._id}`,
+                        `/api/character/save/${user._id}`,
                         {
                             method: "PUT",
                             body: JSON.stringify(user),
