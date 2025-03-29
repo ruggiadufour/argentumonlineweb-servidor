@@ -225,7 +225,7 @@ function Login() {
                 };
 
                 const characterSave = await funct.fetchUrl(
-                    `/api/character/save/${personaje._id}`,
+                    `/character/save/${personaje._id}`,
                     {
                         method: "PUT",
                         body: JSON.stringify(bodyPersonaje),

@@ -140,7 +140,7 @@ function Socket() {
                     personajeWS.updatedAt = new Date();
 
                     const characterSave = await funct.fetchUrl(
-                        `/api/character/save/${personajeWS._id}`,
+                        `/character/save/${personajeWS._id}`,
                         {
                             method: "PUT",
                             body: JSON.stringify(personajeWS),
