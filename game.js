@@ -1459,9 +1459,10 @@ function Game() {
                 return;
             }
 
-            while (user.exp >= user.expNextLevel) {
+            // TODO: aca antes habia un while, ver si no rompe algo
+            if (user.exp >= user.expNextLevel) {
                 if (user.level >= 42) {
-                    break;
+                    return;
                 }
 
                 user.level++;
@@ -1630,14 +1631,7 @@ function Game() {
             if (user.pvpChar) return;
 
             item.cant -= cant;
-
-            handleProtocol.quitarUserInvItem(
-                idUser,
-                idPos,
-                cant,
-                vars.clients[idUser]
-            );
-
+            
             if (item.cant <= 0) {
                 if (user.idItemArrow == idPos) {
                     user.idItemArrow = 0;
@@ -1645,6 +1639,13 @@ function Game() {
 
                 delete user.inv[idPos];
             }
+
+            handleProtocol.quitarUserInvItem(
+                idUser,
+                idPos,
+                cant,
+                vars.clients[idUser]
+            );
         } catch (err) {
             funct.dumpError(err);
         }
